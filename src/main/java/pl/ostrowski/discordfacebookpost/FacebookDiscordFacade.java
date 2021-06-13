@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.ostrowski.discordfacebookpost.discord.DiscordSender;
 import pl.ostrowski.discordfacebookpost.discord.HookGenerator;
-import pl.ostrowski.discordfacebookpost.facebook.Feed;
+import pl.ostrowski.discordfacebookpost.facebook.Page;
 
 @Service
 @RequiredArgsConstructor
@@ -14,8 +14,9 @@ public class FacebookDiscordFacade {
 
   private final DiscordSender discordSender;
 
-  public void proceedPostToDiscord(Feed feed) {
-    log.info("Received " + feed);
-    HookGenerator.generate(feed).ifPresent(discordSender::send);
+  public void proceedPostToDiscord(Page page) {
+    log.info("Received " + page);
+    if (page.getEntry().length == 1 && page.getEntry()[0].getChanges().length == 1)
+      HookGenerator.generate(page.getEntry()[0].getChanges()[0]).ifPresent(discordSender::send);
   }
 }
