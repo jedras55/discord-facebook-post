@@ -17,6 +17,6 @@ public class FacebookDiscordFacade {
   public void proceedPostToDiscord(Page page) {
     log.info("Received " + page);
     if (page.getEntry().length == 1 && page.getEntry()[0].getChanges().length == 1)
-      HookGenerator.generate(page.getEntry()[0]).ifPresent(discordSender::send);
+      HookGenerator.generate(page.getEntry()[0].getChanges()[0]).ifPresent(discordSender::send);
   }
 }

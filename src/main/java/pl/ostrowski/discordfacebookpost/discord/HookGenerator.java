@@ -1,20 +1,19 @@
 package pl.ostrowski.discordfacebookpost.discord;
 
 import java.util.Optional;
-import pl.ostrowski.discordfacebookpost.facebook.Entry;
+import pl.ostrowski.discordfacebookpost.facebook.Feed;
 import pl.ostrowski.discordfacebookpost.facebook.Value;
 
 public class HookGenerator {
 
-  public static Optional<Hook> generate(Entry entry) {
-    String pageId = entry.getId();
-    Value value = entry.getChanges()[0].getValue();
+  public static Optional<Hook> generate(Feed feed) {
+    Value value = feed.getValue();
     if (value != null
         && value.getMessage() != null
         && value.getLink() != null
         && value.getPostId() != null) {
 
-      String link = queryPostLink(pageId, value.getPostId());
+      String link = queryPostLink(value.getPostId());
       String message = value.getMessage();
       String photo = value.getLink();
 
@@ -24,7 +23,10 @@ public class HookGenerator {
     }
   }
 
-  private static String queryPostLink(String pageId, String postId) {
+  private static String queryPostLink(String connectedId) {
+    String pageId = connectedId.substring(0, connectedId.indexOf("_"));
+    String postId = connectedId.substring(connectedId.indexOf("_") + 1);
+
     return "https://www.facebook.com/permalink.php?story_fbid=" + postId + "&id=" + pageId;
   }
 }
