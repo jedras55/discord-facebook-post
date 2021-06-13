@@ -10,5 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Entry {
+  private String id;
   private Feed[] changes;
 }
