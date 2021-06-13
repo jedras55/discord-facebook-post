@@ -22,6 +22,7 @@ public class Value {
 
   enum Item {
     POST,
-    STATUS
+    STATUS,
+    PHOTO
   }
 }
