@@ -17,8 +17,18 @@ public class Value {
   private String message;
   private User from;
 
+  @JsonProperty("reaction_type")
+  private ReactionType reactionType;
+
   @JsonProperty("post_id")
   private String postId;
+
+  @JsonProperty("video_id")
+  private String videoId;
+
+  public void setReactionType(String reactionType) {
+    this.reactionType = ReactionType.valueOf(reactionType.toUpperCase());
+  }
 
   public void setItem(String item) {
     this.item = Item.valueOf(item.toUpperCase());
@@ -29,6 +39,12 @@ public class Value {
     STATUS,
     PHOTO,
     COMMENT,
-    REACTION
+    REACTION,
+    VIDEO,
+    PICTURE
+  }
+
+  enum ReactionType {
+    LIKE
   }
 }
