@@ -23,9 +23,11 @@ public class Value {
     this.item = Item.valueOf(item.toUpperCase());
   }
 
-  enum Item {
+  public enum Item {
     POST,
     STATUS,
-    PHOTO
+    PHOTO,
+    COMMENT,
+    REACTION
   }
 }
