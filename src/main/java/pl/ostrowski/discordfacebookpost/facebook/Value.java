@@ -15,6 +15,7 @@ public class Value {
   private Item item;
   private String link;
   private String message;
+  private User from;
 
   @JsonProperty("post_id")
   private String postId;
