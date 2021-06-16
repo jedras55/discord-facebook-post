@@ -45,6 +45,7 @@ public class Value {
   }
 
   enum ReactionType {
-    LIKE
+    LIKE,
+    LOVE
   }
 }
