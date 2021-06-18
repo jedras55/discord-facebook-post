@@ -20,6 +20,8 @@ public class Value {
   @JsonProperty("reaction_type")
   private ReactionType reactionType;
 
+  private Verb verb;
+
   @JsonProperty("post_id")
   private String postId;
 
@@ -32,6 +34,10 @@ public class Value {
 
   public void setItem(String item) {
     this.item = Item.valueOf(item.toUpperCase());
+  }
+
+  public void setVerb(String verb) {
+    this.verb = Verb.valueOf(verb.toUpperCase());
   }
 
   public enum Item {
@@ -47,5 +53,20 @@ public class Value {
   enum ReactionType {
     LIKE,
     LOVE
+  }
+
+  public enum Verb {
+    ADD,
+    BLOCK,
+    EDIT,
+    EDITED,
+    DELETE,
+    FOLLOW,
+    HIDE,
+    MUTE,
+    REMOVE,
+    UNBLOCK,
+    UNHIDE,
+    UPDATE
   }
 }
