@@ -24,7 +24,7 @@ public class FacebookDiscordFacade {
   private final PageSender pageSender;
 
   public void proceedPostToDiscord(Page page) {
-    List<Sender> senders = Arrays.asList(pageSender, discordSender);
+    List<Sender> senders = Arrays.asList(discordSender);
 
     log.info("Received " + page);
     if (hasOneEntryAndOneChange(page)) {
