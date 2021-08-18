@@ -24,7 +24,11 @@ public class PageSender implements Sender {
   public void send(Hook hook) {
     log.info("Sending " + hook);
     String discordUrl = queryUrl();
-    restTemplate.postForEntity(discordUrl, hook, Object.class);
+    try {
+      restTemplate.postForEntity(discordUrl, hook, Object.class);
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
   }
 
   private String queryUrl() {
