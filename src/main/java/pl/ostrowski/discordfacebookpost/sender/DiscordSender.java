@@ -24,7 +24,8 @@ public class DiscordSender implements Sender {
   public void send(Hook hook) {
     log.info("Sending " + hook);
     String discordUrl = queryUrl();
-    restTemplate.postForEntity(discordUrl, hook, Object.class);
+    hook.clipHooks()
+        .forEach(clippedHook -> restTemplate.postForEntity(discordUrl, clippedHook, Object.class));
   }
 
   private String queryUrl() {
