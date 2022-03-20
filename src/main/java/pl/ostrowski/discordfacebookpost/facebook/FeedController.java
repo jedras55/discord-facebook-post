@@ -13,7 +13,7 @@ public class FeedController {
   private final FacebookDiscordFacade facebookDiscordFacade;
 
   @PostMapping
-  public void handleFeed(@RequestBody Page page) {
-    facebookDiscordFacade.proceedPostToDiscord(page);
+  public void handleFeed(@RequestBody Value value) {
+    facebookDiscordFacade.proceedPostToDiscord(value);
   }
 }

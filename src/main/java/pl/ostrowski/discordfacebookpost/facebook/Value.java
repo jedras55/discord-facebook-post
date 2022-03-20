@@ -15,10 +15,7 @@ public class Value {
   private Item item;
   private String link;
   private String message;
-  private User from;
-
-  @JsonProperty("reaction_type")
-  private ReactionType reactionType;
+  private String url;
 
   private Verb verb;
 
@@ -27,10 +24,6 @@ public class Value {
 
   @JsonProperty("video_id")
   private String videoId;
-
-  public void setReactionType(String reactionType) {
-    this.reactionType = ReactionType.valueOf(reactionType.toUpperCase());
-  }
 
   public void setItem(String item) {
     this.item = Item.valueOf(item.toUpperCase());
@@ -48,11 +41,6 @@ public class Value {
     REACTION,
     VIDEO,
     PICTURE
-  }
-
-  enum ReactionType {
-    LIKE,
-    LOVE
   }
 
   public enum Verb {
